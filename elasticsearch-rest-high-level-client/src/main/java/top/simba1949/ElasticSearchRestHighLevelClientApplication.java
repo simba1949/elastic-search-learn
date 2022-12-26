@@ -15,7 +15,7 @@ public class ElasticSearchRestHighLevelClientApplication {
         RestClient restClient = RestClient.builder(new HttpHost("120.48.47.7", 9200, "http")).build();
 
         DocumentQueryService documentQueryService = new DocumentQueryService();
-        documentQueryService.match(restClient);
+        documentQueryService.sort(restClient);
 
         // 关闭 ES 客户端
         restClient.close();
