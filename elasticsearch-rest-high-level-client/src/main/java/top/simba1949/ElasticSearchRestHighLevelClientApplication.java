@@ -14,8 +14,8 @@ public class ElasticSearchRestHighLevelClientApplication {
         // 创建 ES 客户端
         RestClient restClient = RestClient.builder(new HttpHost("120.48.47.7", 9200, "http")).build();
 
-        IndexService indexService = new IndexService();
-        indexService.deleteAllIndex(restClient);
+        DocumentQueryService documentQueryService = new DocumentQueryService();
+        documentQueryService.match(restClient);
 
         // 关闭 ES 客户端
         restClient.close();
