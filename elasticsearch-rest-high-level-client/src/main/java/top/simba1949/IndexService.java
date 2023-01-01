@@ -14,8 +14,6 @@ import java.io.IOException;
 @Slf4j
 public class IndexService {
 
-    public static final String ENDPOINT = "/user_index";
-
     /**
      * 创建索引
      * <p>
@@ -25,7 +23,7 @@ public class IndexService {
      * @throws IOException
      */
     public void putIndex(RestClient restClient) throws IOException {
-        Request request = new Request("PUT", ENDPOINT);
+        Request request = new Request("PUT", "/user_index");
         Response response = restClient.performRequest(request);
         // ES官方读取响应：https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.5/java-rest-low-usage-responses.html
         String entityStr = EntityUtils.toString(response.getEntity());
@@ -41,7 +39,7 @@ public class IndexService {
      * @throws IOException
      */
     public void getIndex(RestClient restClient) throws IOException {
-        Request request = new Request("GET", ENDPOINT);
+        Request request = new Request("GET", "/user_index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
         log.info("IndexService.getIndex response is {}", JSONUtil.toJsonStr(entityStr));
@@ -50,7 +48,7 @@ public class IndexService {
     /**
      * 获取所有索引信息
      * <p>
-     *     GET /_cat/indices?v=true&prett
+     *     GET /_cat/indices?v=true&pretty
      * </p>
      * @param restClient
      * @throws IOException
@@ -71,7 +69,7 @@ public class IndexService {
      * @throws IOException
      */
     public void deleteIndex(RestClient restClient) throws IOException {
-        Request request = new Request("DELETE", ENDPOINT);
+        Request request = new Request("DELETE", "/user_index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
         log.info("IndexService.deleteIndex entity is {}", JSONUtil.toJsonStr(entityStr));

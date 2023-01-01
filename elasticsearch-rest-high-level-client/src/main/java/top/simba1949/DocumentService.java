@@ -24,8 +24,8 @@ public class DocumentService {
      *     POST /[索引]/_doc
      *     {
      *         “username”: "李白",
-     *         "age": "888",
-     *         "price": "999999",
+     *         "age": 1111,
+     *         "price": 11.11,
      *         "sex": "男"
      *     }
      * </p>
@@ -33,11 +33,13 @@ public class DocumentService {
      * @throws IOException
      */
     public void postDocumentRandomId(RestClient restClient) throws IOException {
-        HashMap<String, String> hashMap4Insert = Maps.newHashMap();
+        HashMap<String, Object> hashMap4Insert = Maps.newHashMap();
         hashMap4Insert.put("username", "李白");
-        hashMap4Insert.put("age", "888");
-        hashMap4Insert.put("price", "999999");
+        hashMap4Insert.put("age", 1111);
+        hashMap4Insert.put("price", 11.11);
         hashMap4Insert.put("sex", "男");
+
+        log.info("the request params is {}", JSONUtil.toJsonStr(hashMap4Insert));
 
         Request request = new Request("POST", "/user_index/_doc");
         request.setJsonEntity(JSONUtil.toJsonStr(hashMap4Insert));
@@ -53,8 +55,8 @@ public class DocumentService {
      *     POST /[索引]/_doc/[自定义id值]
      *     {
      *         “username”: "李白",
-     *         "age": "888",
-     *         "price": "999999",
+     *         "age": 2222,
+     *         "price": 22.22,
      *         "sex": "男"
      *     }
      * </p>
@@ -62,11 +64,13 @@ public class DocumentService {
      * @throws IOException
      */
     public void postDocumentAssignId(RestClient restClient) throws IOException {
-        HashMap<String, String> hashMap4Insert = Maps.newHashMap();
+        HashMap<String, Object> hashMap4Insert = Maps.newHashMap();
         hashMap4Insert.put("username", "李白");
-        hashMap4Insert.put("age", "888");
-        hashMap4Insert.put("price", "999999");
+        hashMap4Insert.put("age", 2222);
+        hashMap4Insert.put("price", 22.22);
         hashMap4Insert.put("sex", "男");
+
+        log.info("the request params is {}", JSONUtil.toJsonStr(hashMap4Insert));
 
         Request request = new Request("POST", "/user_index/_doc/2");
         request.setJsonEntity(JSONUtil.toJsonStr(hashMap4Insert));
@@ -111,23 +115,25 @@ public class DocumentService {
      * <p>
      *     PUT /[索引]/_doc/[ID值]
      *     {
-     *         “username”：“李白1”，
-     *         “age”：“8881”，
-     *         “price”：“9999991”，
-     *         “sex”：“男1”
+     *         “username”：“李白3”，
+     *         “age”：3333，
+     *         “price”：33.33，
+     *         “sex”：“男3”
      *     }
      * </p>
      * @param restClient
      * @throws IOException
      */
     public void putAllOverDataDocument(RestClient restClient) throws IOException {
-        HashMap<String, String> hashMap4Insert = Maps.newHashMap();
-        hashMap4Insert.put("username", "李白1");
-        hashMap4Insert.put("age", "8881");
-        hashMap4Insert.put("price", "9999991");
-        hashMap4Insert.put("sex", "男1");
+        HashMap<String, Object> hashMap4Insert = Maps.newHashMap();
+        hashMap4Insert.put("username", "李白3");
+        hashMap4Insert.put("age", 3333);
+        hashMap4Insert.put("price", 33.33);
+        hashMap4Insert.put("sex", "男3");
 
-        Request request = new Request("PUT", "/user_index/_doc/1");
+        log.info("the request params is {}", JSONUtil.toJsonStr(hashMap4Insert));
+
+        Request request = new Request("PUT", "/user_index/_doc/2");
         request.setJsonEntity(JSONUtil.toJsonStr(hashMap4Insert));
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity(), "utf-8");
@@ -152,6 +158,8 @@ public class DocumentService {
         inHashMap.put("username", "李太白");
         HashMap<String, Object> outHashMap = Maps.newHashMap();
         outHashMap.put("doc", inHashMap);
+
+        log.info("the request params is {}", JSONUtil.toJsonStr(outHashMap));
 
         Request request = new Request("POST", "/user_index/_update/1");
         request.setJsonEntity(JSONUtil.toJsonStr(outHashMap));
