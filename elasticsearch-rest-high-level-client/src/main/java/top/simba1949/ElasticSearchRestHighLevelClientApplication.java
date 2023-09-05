@@ -2,6 +2,7 @@ package top.simba1949;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
+import top.simba1949.operation.MappingService;
 
 import java.io.IOException;
 
