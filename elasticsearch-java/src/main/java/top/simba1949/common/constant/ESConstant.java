@@ -8,4 +8,6 @@ public interface ESConstant {
     String SCHEME = "http";
     String IP = "172.27.121.240";
     int PORT = 9200;
+
+    String SERVER_URL = SCHEME + "://" + IP + ":" + PORT;
 }
