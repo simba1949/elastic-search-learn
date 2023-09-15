@@ -1,6 +1,6 @@
 package top.simba1949.operation;
 
-import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.*;
@@ -27,7 +27,7 @@ public class IndexService {
         Response response = restClient.performRequest(request);
         // ES官方读取响应：https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.5/java-rest-low-usage-responses.html
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.putIndex response is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.putIndex response is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -42,7 +42,7 @@ public class IndexService {
         Request request = new Request("GET", "/user_index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.getIndex response is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.getIndex response is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -57,7 +57,7 @@ public class IndexService {
         Request request = new Request("GET", "/_cat/indices?v=true&pretty");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.getAllIndex entity is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.getAllIndex entity is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -72,7 +72,7 @@ public class IndexService {
         Request request = new Request("DELETE", "/user_index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.deleteIndex entity is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.deleteIndex entity is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -87,7 +87,7 @@ public class IndexService {
         Request request = new Request("DELETE", "/role_index,permission_index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.deleteMultiIndex entity is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.deleteMultiIndex entity is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -102,7 +102,7 @@ public class IndexService {
         Request request = new Request("DELETE", "/*index");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.deleteRegexIndex entity is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.deleteRegexIndex entity is {}", JSONObject.toJSONString(entityStr));
     }
 
     /**
@@ -121,6 +121,6 @@ public class IndexService {
         Request request = new Request("DELETE", "/_all");
         Response response = restClient.performRequest(request);
         String entityStr = EntityUtils.toString(response.getEntity());
-        log.info("IndexService.deleteAllIndex entity is {}", JSONUtil.toJsonStr(entityStr));
+        log.info("IndexService.deleteAllIndex entity is {}", JSONObject.toJSONString(entityStr));
     }
 }
