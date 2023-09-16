@@ -30,5 +30,11 @@
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>7.17.13</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/co.elastic.clients/elasticsearch-java -->
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>8.10.0</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package top.simba1949.domain.es;
+package top.simba1949.common.domain.es;
 
 import lombok.Data;
 
@@ -36,7 +36,7 @@ public class Flight implements Serializable {
     private BigDecimal Cancelled;
     private BigDecimal FlightTimeMin;
     private String Origin;
-    private top.simba1949.domain.es.OriginLocation OriginLocation;
+    private OriginLocation OriginLocation;
     private String DestRegion;
     private String OriginAirportID;
     private String OriginRegion;

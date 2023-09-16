@@ -12,7 +12,8 @@
         <module>elastic-search-integration-spring-boot</module>
         <module>elastic-search-common</module>
         <module>elasticsearch-rest-high-level-client</module>
-        <module>elasticsearch-java</module>
+        <module>elastic-search-java</module>
+        <module>elastic-search-rest-client</module>
     </modules>
 
     <properties>

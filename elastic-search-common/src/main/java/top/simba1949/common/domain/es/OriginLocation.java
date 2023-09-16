@@ -1,4 +1,4 @@
-package top.simba1949.domain.es;
+package top.simba1949.common.domain.es;
 
 import lombok.Data;
 
@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 
 /**
  * @author anthony
- * @version 2023/9/15 15:49
+ * @version 2023/9/15 15:50
  */
 @Data
-public class DestLocation implements Serializable {
+public class OriginLocation implements Serializable {
     @Serial
-    private static final long serialVersionUID = 4388005472726109522L;
+    private static final long serialVersionUID = 3124698277314651895L;
 
     private BigDecimal lat;
     private BigDecimal lon;

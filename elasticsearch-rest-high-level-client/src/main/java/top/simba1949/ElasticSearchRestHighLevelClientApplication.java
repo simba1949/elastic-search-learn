@@ -2,7 +2,6 @@ package top.simba1949;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
-import top.simba1949.operation.MappingService;
 
 import java.io.IOException;
 
@@ -24,10 +23,5 @@ public class ElasticSearchRestHighLevelClientApplication {
 //        DocumentQueryService documentQueryService = new DocumentQueryService();
 //        documentQueryService.aggregation4Avg(restClient);
 
-        MappingService mappingService = new MappingService();
-        mappingService.putMapping(restClient);
-
-        // 关闭 ES 客户端
-        restClient.close();
     }
 }

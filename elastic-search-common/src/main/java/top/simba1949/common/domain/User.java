@@ -1,4 +1,4 @@
-package top.simba1949.domain;
+package top.simba1949.common.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,9 +1,13 @@
 package top.simba1949.operation;
 
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.util.EntityUtils;
-import org.elasticsearch.client.*;
+import org.elasticsearch.client.Request;
+import org.elasticsearch.client.Response;
+import org.elasticsearch.client.RestClient;
+import top.simba1949.config.ESRestHighLevelClient;
 
 import java.io.IOException;
 
@@ -13,6 +17,13 @@ import java.io.IOException;
  */
 @Slf4j
 public class IndexService {
+
+    public static void main(String[] args) {
+        // 创建 ES 客户端
+        ElasticsearchClient esClient = ESRestHighLevelClient.initClient();
+
+
+    }
 
     /**
      * 创建索引

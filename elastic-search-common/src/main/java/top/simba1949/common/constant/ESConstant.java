@@ -6,7 +6,7 @@ package top.simba1949.common.constant;
  */
 public interface ESConstant {
     String SCHEME = "http";
-    String IP = "172.27.121.240";
+    String IP = "192.168.8.17";
     int PORT = 9200;
 
     String SERVER_URL = SCHEME + "://" + IP + ":" + PORT;

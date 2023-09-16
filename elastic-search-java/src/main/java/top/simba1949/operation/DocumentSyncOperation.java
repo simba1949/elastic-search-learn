@@ -6,8 +6,8 @@ import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.bulk.BulkResponseItem;
 import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import top.simba1949.common.domain.User;
 import top.simba1949.config.ESClient;
-import top.simba1949.domain.User;
 
 import java.io.IOException;
 import java.util.Date;
