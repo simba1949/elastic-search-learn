@@ -7,12 +7,9 @@ import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.core.search.HitsMetadata;
-import co.elastic.clients.json.JsonData;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import top.simba1949.config.ESClient;
-import top.simba1949.domain.es.Flight;
-
-import java.util.Map;
 
 /**
  * 文档搜索
@@ -51,12 +48,14 @@ public class DocumentFullQuerySyncOperation {
                 .size(10)
                 .build();
 
-        SearchResponse<Flight> searchResponse = client.search(searchRequest, Flight.class);
+        // 这里直接使用 Flight.class 会存在反序列化的问题
+        SearchResponse<Object> searchResponse = client.search(searchRequest, Object.class);
         long took = searchResponse.took();
         log.info("查询总耗时：{}", took);
-        HitsMetadata<Flight> hits = searchResponse.hits();
-        for (Hit<Flight> hit : hits.hits()) {
-            Map<String, JsonData> fields = hit.fields();
+        HitsMetadata<Object> hits = searchResponse.hits();
+        for (Hit<Object> hit : hits.hits()) {
+            Object source = hit.source();
+            log.info("查询到的数据是{}", JSONObject.toJSONString(source));
         }
     }
 }
